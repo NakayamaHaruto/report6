@@ -36,11 +36,17 @@ public class GameMaster extends Character{
         System.out.println("リバーしました");
         System.out.println("フィールドカード:" + fieldCards);
     }
-    public void information(){
+    public void information(){ // ポットやチップを表示
+        // System.out.println(potsList);
         System.out.println("現在のポット" + pots);
-        System.out.println(potsList);
         System.out.println("自分のチップ" + player.tip);
         System.out.println("相手のチップ" + opponent.tip);
+    }
+    public void actionComand(){
+        player.secondComand();
+        opponent.decideAction();
+        player.callAction();
+        information();
     }
     
     public void startGame(){
@@ -49,13 +55,13 @@ public class GameMaster extends Character{
         System.out.println("自分のstarting hand:" + player.drawcards(firstcords));
         System.out.println("相手のstarting hand:" + opponent.drawcards(firstcords));
         player.firstComand();
+        opponent.decideAction();
+        player.callAction();
         information();
         flop();
-        player.secondComand();
-        information();
+        actionComand();
         turn();
-        player.secondComand();
-        information();
+        actionComand();
         river();
         System.out.println("自分の手札" + player.handcard + fieldCards);
         System.out.println("相手の手札" + opponent.handcard + fieldCards);

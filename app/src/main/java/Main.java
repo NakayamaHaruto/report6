@@ -5,8 +5,9 @@ public class Main {
         
         // PlayingCards deck = new PlayingCards(); // インスタンスを作成
         // deck.printCards();
-        Player player = new Player(100);
-        Opponent opponent = new Opponent(100);
+        Player player = new Player(100, null);
+        Opponent opponent = new Opponent(100, player);
+        player.opponent = opponent;
         
         GameMaster gameMaster = new GameMaster(player, opponent);
         gameMaster.startGame();

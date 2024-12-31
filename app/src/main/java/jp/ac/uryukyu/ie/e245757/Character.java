@@ -42,17 +42,40 @@ public class Character {
     }
     public void call(){
         if (potsList.size() != 0){
-            int max = Collections.max(potsList);
-            int callAmount = max - pots;
+            int callAmount = potsList.get(potsList.size() - 1);
             if (tip > callAmount){
                 tip = tip - callAmount;
                 potsList.add(callAmount);
-                System.out.println(callAmount + "をコールしました");
+                pots = pots + callAmount;
+                System.out.println("コールしました");
             } else{
-                System.out.println("コール留守のに必要なチップがありません");
+                System.out.println("コールするのに必要なチップがありません");
             } 
         } else{
             System.out.println("現在のベットはありません");
         }
+    }
+    public void raiseCall(){
+        if (potsList.size() >= 2){
+            if (potsList.get(potsList.size() - 1) > potsList.get(potsList.size() - 2)){
+                int callAmount = potsList.get(potsList.size() - 1) - potsList.get(potsList.size() - 2);
+                if (tip > callAmount){
+                    tip = tip - callAmount;
+                    potsList.add(callAmount);
+                    pots = pots + callAmount;
+                    System.out.println("コールしました");
+                } else{
+                    System.out.println("コールするのに必要なチップがありません");
+                }
+            }
+            
+        } else{
+            System.out.println("現在のベットはありません");
+        }
+    }
+    public void fold(){
+        System.out.println("フォールドしました");
+        pots = 0;
+            System.exit(0);
     }
 }
