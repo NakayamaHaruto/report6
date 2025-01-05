@@ -2,23 +2,39 @@ package jp.ac.uryukyu.ie.e245757;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Characterクラスを継承したクラス
+ * プレイヤーの操作をまとめたクラス
+ */
 public class Player extends Character{
     public Opponent opponent;
     Scanner scanner;
     ArrayList<String> actions;
+    /**
+     * コンストラクタ　チップ、相手のインスタンス、行動を入れるリスト、スキャナークラスのインスタンスを用意
+     * @param tip　チップ
+     * @param opponent　相手のインスタンス
+     */
     public Player(int tip, Opponent opponent) {
         super(tip);
         this.opponent = opponent;
         actions = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
+    /**
+     * addAction メソッド
+     * プレイヤーの行動をリストに入れる
+     */
     public void addAction(){
         actions.add("ベット");
         actions.add("フォールド");
         actions.add("チェック");
         actions.add("コール");
     }
+    /**
+     * fold メソッド
+     * プレイヤーがフォールドする時に使うメソッド
+     */
     @Override
     public void fold(){
         System.out.println("フォールドしました");
@@ -28,6 +44,10 @@ public class Player extends Character{
             pots = 0;
             System.exit(0);
     }
+    /**
+     * firstComand メソッド
+     * プレイヤーが最初に行う行動をまとめたメソッド
+     */
     public void firstComand(){
         addAction();
         System.out.println("1 ~ 2までの数字の中から選んでください");
@@ -49,6 +69,10 @@ public class Player extends Character{
             break;
           }
     }
+    /**
+     * secondComand メソッド
+     * 相手が行動した後にプレイヤーが行う行動をまとめたメソッド
+     */
     public void secondComand(){
         addAction();
         System.out.println("1 ~ 3までの数字の中から選んでください");
@@ -72,6 +96,10 @@ public class Player extends Character{
             break;
           }
     }
+    /**
+     * callAction メソッド
+     * プレイヤーがコールをする時に使うメソッド
+     */
     public void callAction(){
         System.out.println("相手がレイズしました");
         System.out.println("1 ~ 2までの数字の中から選んでください");

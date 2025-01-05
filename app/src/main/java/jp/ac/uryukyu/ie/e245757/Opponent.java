@@ -2,17 +2,29 @@ package jp.ac.uryukyu.ie.e245757;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * Characterクラスを継承したクラス
+ * 相手の操作をまとめたクラス
+ */
 public class Opponent extends Character{
     Player player;
     Random random;
     Random random2;
+    /**
+     * コンストラクタ　チップ、プレイヤーのインスタンス、ランダムクラスのインスタンスを用意
+     * @param tip　チップ
+     * @param player　プレイヤーのインスタンス
+     */
     public Opponent(int tip, Player player){
         super(tip);
         this.player = player;
         random = new Random();
         random2 = new Random();
     }
+    /**
+     * fold メソッド
+     * 相手がフォールドする時に使うメソッド
+     */
     @Override
     public void fold(){
         System.out.println("相手がフォールドしました");
@@ -22,6 +34,10 @@ public class Opponent extends Character{
             pots = 0;
             System.exit(0);
     }
+    /**
+     * decideAction メソッド
+     * 相手の行動をまとめたメソッド
+     */
     public void decideAction(){
         int num = random.nextInt(3) + 1;
         switch(num){
