@@ -58,6 +58,7 @@ public class Player extends Character{
         switch(num){
             case 1: // betする
             System.out.println("いくらのチップをかけますか");
+            System.out.println("自分のチップ:" + tip);
             int num2 = scanner.nextInt();
             bet(num2);
             break;
@@ -83,6 +84,7 @@ public class Player extends Character{
         switch(num){
             case 1: // betする
             System.out.println("いくらのチップをかけますか");
+            System.out.println("自分のチップ" + tip);
             int num2 = scanner.nextInt();
             bet(num2);
             break;
@@ -90,6 +92,7 @@ public class Player extends Character{
             fold();
             break;
             case 3: // チェックする
+            bet(0);
             System.out.println("チェックしました");
             default:
             System.out.println("1 ~ 3の中から選んでください");

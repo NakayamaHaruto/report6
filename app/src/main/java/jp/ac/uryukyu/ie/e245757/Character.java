@@ -55,13 +55,15 @@ public class Character {
      * @param amountWagered　ベットする金額
      */
     public void bet(int amountWagered){
-        if (tip > 0){
+        if (tip < amountWagered){ // ベットする金額が足りない時
+            System.out.println("チップがありません---");
+            fold();
+        }
+        else { // ベットできる時
             tip = tip - amountWagered;
             potsList.add(amountWagered);
             pots = pots + amountWagered;
             System.out.println(amountWagered + "をベットしました");
-        }else{
-            System.out.println("チップがありません");
         }
     }
     /**
@@ -72,14 +74,15 @@ public class Character {
     public void call(){
         if (potsList.size() != 0){
             int callAmount = potsList.get(potsList.size() - 1);
-            if (tip > callAmount){
+            if (tip < callAmount) { // コールするための金額がない時
+                System.out.println("コールするのに必要なチップがありません");
+                fold();
+            } else { // コールできる時
                 tip = tip - callAmount;
                 potsList.add(callAmount);
                 pots = pots + callAmount;
                 System.out.println("コールしました");
-            } else{
-                System.out.println("コールするのに必要なチップがありません");
-            } 
+            }
         } else{
             System.out.println("現在のベットはありません");
         }
@@ -93,16 +96,16 @@ public class Character {
         if (potsList.size() >= 2){
             if (potsList.get(potsList.size() - 1) > potsList.get(potsList.size() - 2)){
                 int callAmount = potsList.get(potsList.size() - 1) - potsList.get(potsList.size() - 2);
-                if (tip > callAmount){
+                if (tip < callAmount) { // コールできない時
+                    System.out.println("コールするのに必要なチップがありません");
+                    fold();
+                } else { // コールできる時
                     tip = tip - callAmount;
                     potsList.add(callAmount);
                     pots = pots + callAmount;
                     System.out.println("コールしました");
-                } else{
-                    System.out.println("コールするのに必要なチップがありません");
                 }
-            }
-            
+            }   
         } else{
             System.out.println("現在のベットはありません");
         }
@@ -116,5 +119,13 @@ public class Character {
         System.out.println("フォールドしました");
         pots = 0;
             System.exit(0);
+    }
+    /**
+     * check メソッド
+     * チェックする時に使うメソッド
+     */
+    public void check(){
+        bet(0);
+        System.out.println("チェックしました");
     }
 }

@@ -72,7 +72,6 @@ public class GameMaster extends Character{
     public void actionComand(){
         player.secondComand();
         opponent.decideAction();
-        player.callAction();
         information();
     }
     /**
@@ -87,7 +86,6 @@ public class GameMaster extends Character{
         System.out.println("相手のstarting hand:" + opponent.drawcards(firstcords));
         player.firstComand();
         opponent.decideAction();
-        player.callAction();
         information();
         flop();
         actionComand();
