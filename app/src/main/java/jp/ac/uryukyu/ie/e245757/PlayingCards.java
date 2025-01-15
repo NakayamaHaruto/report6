@@ -14,7 +14,7 @@ public class PlayingCards {
      */
     public static void card(){
         cards = new ArrayList<>(); // 52枚のトランプが入っている配列
-        String[] marks = {"♠︎", "♣︎", "❤️", "♦️"};
+        String[] marks = {"♠︎", "♣︎", "❤︎", "♦︎"};
         int[] figures = new int[13];
         for (int i = 1; i <= 13; i ++){
             figures[i - 1] = i;

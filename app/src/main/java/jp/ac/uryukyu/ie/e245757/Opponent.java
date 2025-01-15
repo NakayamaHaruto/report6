@@ -8,7 +8,6 @@ import java.util.Random;
 public class Opponent extends Character {
     Player player;
     Random random;
-    Random random2;
     /**
      * コンストラクタ　チップ、プレイヤーのインスタンス、ランダムクラスのインスタンスを用意
      * @param tip　チップ
