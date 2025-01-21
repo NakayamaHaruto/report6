@@ -1,7 +1,7 @@
 package jp.ac.uryukyu.ie.e245757;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 /**
  * サブクラスのPlayerクラスとOpponentクラスに共通してるものを書いてるクラス
  */
@@ -25,7 +25,7 @@ public class Character {
      * コンストラクタ　ポット、チップ、手札をいれるリスト、ポットの履歴が見れるリストを用意
      * @param tip　チップ
      */
-    public Character(int tip){       
+    public Character(int tip) {       
         this.tip = tip;
         handcard = new ArrayList<>();
         potsList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class Character {
      * getTip メソッド
      * @return　チップを返す
      */
-    public int getTip(){
+    public int getTip() {
         return tip;
     }
     /**
@@ -43,7 +43,7 @@ public class Character {
      * @param count カードを引く枚数
      * @return　引いたカードのリスト
      */
-    public ArrayList<String> drawcards(int count){
+    public ArrayList<String> drawcards(int count) {
         for (int i = 0; i < count; i++){
             handcard.add(PlayingCards.drawcard());
         }
@@ -54,8 +54,8 @@ public class Character {
      * ベットするメソッド
      * @param amountWagered　ベットする金額
      */
-    public void bet(int amountWagered){
-        if (tip < amountWagered){ // ベットする金額が足りない時
+    public void bet(int amountWagered) {
+        if (tip < amountWagered) { // ベットする金額が足りない時
             System.out.println("チップがありません---");
             fold();
         }
@@ -71,8 +71,8 @@ public class Character {
      * 相手がレイズした時を除いた時にコールするメソッド
      * opponentが使うコール
      */
-    public void call(){
-        if (potsList.size() != 0){
+    public void call() {
+        if (potsList.size() != 0) {
             int callAmount = potsList.get(potsList.size() - 1);
             if (tip < callAmount) { // コールするための金額がない時
                 System.out.println("コールするのに必要なチップがありません");
@@ -92,9 +92,9 @@ public class Character {
      * 相手がレイズした時にコールするメソッド
      * playerが使うコール
      */
-    public void raiseCall(){
-        if (potsList.size() >= 2){
-            if (potsList.get(potsList.size() - 1) > potsList.get(potsList.size() - 2)){
+    public void raiseCall() {
+        if (potsList.size() >= 2) {
+            if (potsList.get(potsList.size() - 1) > potsList.get(potsList.size() - 2)) {
                 int callAmount = potsList.get(potsList.size() - 1) - potsList.get(potsList.size() - 2);
                 if (tip < callAmount) { // コールできない時
                     System.out.println("コールするのに必要なチップがありません");
@@ -106,7 +106,7 @@ public class Character {
                     System.out.println("コールしました");
                 }
             }   
-        } else{
+        } else {
             System.out.println("現在のベットはありません");
         }
     }
@@ -115,7 +115,7 @@ public class Character {
      * フォールドする時に使うメソッド
      * メソッドを強制終了する
      */
-    public void fold(){
+    public void fold() {
         System.out.println("フォールドしました");
         pots = 0;
             System.exit(0);
@@ -124,7 +124,7 @@ public class Character {
      * check メソッド
      * チェックする時に使うメソッド
      */
-    public void check(){
+    public void check() {
         bet(0);
         System.out.println("チェックしました");
     }

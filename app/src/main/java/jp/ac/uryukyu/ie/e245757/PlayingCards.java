@@ -12,14 +12,14 @@ public class PlayingCards {
      * 52枚のカードを用意する
      * 手札を全てのインストラクタで共有させる
      */
-    public static void card(){
+    public static void card() {
         cards = new ArrayList<>(); // 52枚のトランプが入っている配列
         String[] marks = {"♠︎", "♣︎", "❤︎", "♦︎"};
         int[] figures = new int[13];
-        for (int i = 1; i <= 13; i ++){
+        for (int i = 1; i <= 13; i ++) {
             figures[i - 1] = i;
         }
-        for (int i = 0; i < marks.length; i ++){
+        for (int i = 0; i < marks.length; i ++) {
             for (int j = 0; j < figures.length; j ++){
                 String card =  marks[i] + figures[j]; // トランプ1枚
                 cards.add(card);
@@ -32,7 +32,7 @@ public class PlayingCards {
      * staticを使ってインスタンス化しなくても使えるようにする
      * Collectionsクラスのshuffleメソッドを使った
      */
-    public static void shuffle(){
+    public static void shuffle() {
         Collections.shuffle(cards);
     }
     /**
@@ -40,7 +40,7 @@ public class PlayingCards {
      * カードを手札の中から1枚引いてそのカードを消す
      * @return 手札の中から消したカードを除いた手札
      */
-    public static String drawcard(){
+    public static String drawcard() {
         return cards.remove(0);
     }
     /**

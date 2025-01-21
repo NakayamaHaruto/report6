@@ -1,12 +1,13 @@
 package jp.ac.uryukyu.ie.e245757;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 /**
  * Characterクラスを継承したクラス
  * プレイヤーと相手の行動をまとめてゲームの進行を進めるクラス
  */
-public class GameMaster extends Character{
+public class GameMaster extends Character {
     Player player;
     Opponent opponent;
     ArrayList<String> fieldCards;
@@ -17,7 +18,7 @@ public class GameMaster extends Character{
      * @param player
      * @param opponent
      */
-    public GameMaster(Player player, Opponent opponent){
+    public GameMaster(Player player, Opponent opponent) {
         this.player = player;
         this.opponent = opponent;
         fieldCards = new ArrayList<>();
@@ -27,9 +28,9 @@ public class GameMaster extends Character{
      * flop メソッド
      * フロップするメソッド
      */
-    public void flop(){
+    public void flop() {
         final int flop = 3; // フロップの時の枚数
-        for (int i = 0; i < flop; i ++){
+        for (int i = 0; i < flop; i ++) {
             fieldCards.add(PlayingCards.drawcard());
         }
         System.out.println("=====フロップ=====");
@@ -40,7 +41,7 @@ public class GameMaster extends Character{
      * turn メソッド
      * ターンするメソッド
      */
-    public void turn(){
+    public void turn() {
         fieldCards.add(PlayingCards.drawcard());
         System.out.println("=====ターン=====");
         System.out.println("フィールドカード:" + fieldCards);
@@ -50,7 +51,7 @@ public class GameMaster extends Character{
      * river メソッド
      * リバーするメソッド
      */
-    public void river(){
+    public void river() {
         fieldCards.add(PlayingCards.drawcard());
         System.out.println("=====リバー=====");
         System.out.println("フィールドカード:" + fieldCards);
@@ -59,7 +60,7 @@ public class GameMaster extends Character{
      * information メソッド
      * ポット状況とプレイヤーのチップと相手のチップを表示するメソッド
      */
-    public void information(){ // ポットやチップを表示
+    public void information() { // ポットやチップを表示
         // System.out.println(potsList);
         System.out.println("現在のポット" + pots);
         System.out.println("自分のチップ" + player.tip);
@@ -69,16 +70,20 @@ public class GameMaster extends Character{
      * actionComand メソッド
      * 行動を少しまとめたもの
      */
-    public void actionComand(){
+    public void actionComand() {
         player.secondComand();
         opponent.decideAction();
         information();
+    }
+    public void listAssociation() {
+        player.handcard.addAll(fieldCards);
+        opponent.handcard.addAll(fieldCards);
     }
     /**
      * startGame メソッド
      * ゲームの進行をまとめたメソッド
      */
-    public void startGame(){
+    public void startGame() {
         final int firstcords = 2; // 最初に配られるカードの枚数
         PlayingCards.card();
         PlayingCards.shuffle(); // カードをシャッフル
@@ -95,5 +100,10 @@ public class GameMaster extends Character{
         System.out.println("自分の手札" + player.handcard + fieldCards);
         System.out.println("相手の手札" + opponent.handcard + fieldCards);
         information();
+        listAssociation();
+        System.out.println("自分の手札" + player.handcard);
+        System.out.println("相手の手札" + opponent.handcard);
+        Collections.sort(player.handcard);
+        System.out.println(player.handcard);
     } 
 }

@@ -37,8 +37,8 @@ public class Opponent extends Character {
     public void decideAction() {
         int num2;
         int num = random.nextInt(3) + 1; // 1 ~ 3の数字をランダムに生成
-        switch(num){
-            case 1: // betする
+        switch(num) {
+            case 1: // betする(レイズ)
             int max = tip; // num2の取りうる最大値
             int min = potsList.get(potsList.size() - 1) + 1; // num2の取りうる最小値
             if (min >= max) {

@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Characterクラスを継承したクラス
  * プレイヤーの操作をまとめたクラス
  */
-public class Player extends Character{
+public class Player extends Character {
     public Opponent opponent;
     Scanner scanner;
     ArrayList<String> actions;
@@ -25,7 +25,7 @@ public class Player extends Character{
      * addAction メソッド
      * プレイヤーの行動をリストに入れる
      */
-    public void addAction(){
+    public void addAction() {
         actions.add("ベット");
         actions.add("フォールド");
         actions.add("チェック");
@@ -36,7 +36,7 @@ public class Player extends Character{
      * プレイヤーがフォールドする時に使うメソッド
      */
     @Override
-    public void fold(){
+    public void fold() {
         System.out.println("フォールドしました");
             opponent.tip = opponent.tip + pots;
             System.out.println("自分のチップ" + tip);
@@ -48,14 +48,14 @@ public class Player extends Character{
      * firstComand メソッド
      * プレイヤーが最初に行う行動をまとめたメソッド
      */
-    public void firstComand(){
+    public void firstComand() {
         addAction();
         System.out.println("1 ~ 2までの数字の中から選んでください");
-        for (int i = 0; i < 2; i ++){
+        for (int i = 0; i < 2; i ++) {
             System.out.println(i + 1 + ":" + actions.get(i));
         }
         int num = scanner.nextInt();
-        switch(num){
+        switch(num) {
             case 1: // betする
             System.out.println("いくらのチップをかけますか");
             System.out.println("自分のチップ:" + tip);
@@ -74,14 +74,14 @@ public class Player extends Character{
      * secondComand メソッド
      * 相手が行動した後にプレイヤーが行う行動をまとめたメソッド
      */
-    public void secondComand(){
+    public void secondComand() {
         addAction();
         System.out.println("1 ~ 3までの数字の中から選んでください");
-        for (int i = 0; i < 3; i ++){
+        for (int i = 0; i < 3; i ++) {
             System.out.println(i + 1 + ":" + actions.get(i));
         }
         int num = scanner.nextInt();
-        switch(num){
+        switch(num) {
             case 1: // betする
             System.out.println("いくらのチップをかけますか");
             System.out.println("自分のチップ" + tip);
@@ -103,7 +103,7 @@ public class Player extends Character{
      * callAction メソッド
      * プレイヤーがコールをする時に使うメソッド
      */
-    public void callAction(){
+    public void callAction() {
         System.out.println("相手がレイズしました");
         System.out.println("1 ~ 2までの数字の中から選んでください");
         System.out.println("1: コールします");
